@@ -182,3 +182,84 @@ public:
         }
     }
 };
+
+class ListaMedicos 
+{
+private:
+    No* inicio;
+
+public:
+    ListaMedicos() 
+    {
+        inicio = nullptr;
+    }
+
+    ~ListaMedicos() {
+        while (inicio != nullptr) 
+        {
+            No* temp = inicio;
+            inicio = inicio->prox;
+            delete temp;
+        }
+    }
+
+    void adicionarMedico(string nome) 
+    {
+        No* novo = new No{nome, 0, nullptr};
+
+        if (inicio == nullptr) 
+        {
+            inicio = novo;
+        } else {
+            No* atual = inicio;
+
+            while (atual->prox != nullptr) 
+            {
+                atual = atual->prox;
+            }
+
+            atual->prox = novo;
+        }
+
+        cout << "Medico adicionado: " << nome << endl;
+    }
+
+    string chamarMedico() 
+    {
+        if (inicio == nullptr) 
+        {
+            cout << "Nenhum medico disponivel." << endl;
+            return "";
+        }
+
+        No* temp = inicio;
+        string nome = temp->nome;
+
+        inicio = inicio->prox;
+        delete temp;
+
+        adicionarMedico(nome);
+
+        cout << "Medico chamado: " << nome << endl;
+        return nome;
+    }
+
+    void percorrer() 
+    {
+        No* atual = inicio;
+
+        cout << "\n=== MEDICOS DISPONIVEIS ===" << endl;
+
+        if (atual == nullptr) 
+        {
+            cout << "Nenhum medico cadastrado." << endl;
+            return;
+        }
+
+        while (atual != nullptr) 
+        {
+            cout << atual->nome << endl;
+            atual = atual->prox;
+        }
+    }
+};
