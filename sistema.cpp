@@ -49,4 +49,57 @@ public:
         quantidade++;
         cout << "Paciente adicionado: " << nome << endl;
     }
+
+    void dequeue() {
+    if (inicio == nullptr) 
+    {
+        cout << "Fila de pacientes vazia." << endl;
+        return;
+    }
+
+    No* temp = inicio;
+
+    cout << "Atendendo paciente: " << temp->nome
+         << " | Urgencia: " << temp->urgencia << endl;
+
+    inicio = inicio->prox;
+
+    if (inicio == nullptr) 
+    {
+        fim = nullptr;
+    }
+
+    delete temp;
+    quantidade--;
+    }
+
+    void frente_peak() {
+        if (inicio == nullptr) 
+        {
+            cout << "Fila de pacientes vazia." << endl;
+            return;
+        }
+
+        cout << "Proximo paciente: " << inicio->nome
+            << " | Urgencia: " << inicio->urgencia << endl;
+    }
+
+    int tamanho() 
+    {
+        int total = 0;
+        No* atual = inicio;
+
+        while (atual != nullptr) {
+            total++;
+            atual = atual->prox;
+        }
+
+        return total;
+    }
+
+    bool vazia() 
+    {
+        return inicio == nullptr;
+    }
 };
+
