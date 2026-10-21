@@ -263,3 +263,25 @@ public:
         }
     }
 };
+
+int main() 
+{
+    FilaPacientes pacientes;
+    PilhaHistorico historico;
+    ListaMedicos medicos;
+
+    cout << "=== HOSPITAL CAMPO REAL ===" << endl;
+
+    medicos.adicionarMedico("Dr. Carlos");
+    medicos.adicionarMedico("Dra. Ana");
+    medicos.adicionarMedico("Dr. Pedro");
+
+    pacientes.enqueue("Joao", 2);
+    pacientes.enqueue("Maria", 3);
+    pacientes.enqueue("Pedro", 1);
+
+    cout << "\nTotal de pacientes: "
+         << pacientes.tamanho() << endl;
+
+    pacientes.frente_peak();
+    medicos.percorrer();
