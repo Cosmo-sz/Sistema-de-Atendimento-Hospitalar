@@ -285,3 +285,26 @@ int main()
 
     pacientes.frente_peak();
     medicos.percorrer();
+        cout << "\n=== INICIANDO ATENDIMENTOS ===" << endl;
+
+    while (!pacientes.vazia()) 
+    {
+        string medico = medicos.chamarMedico();
+
+        if (medico.empty()) 
+        {
+            break;
+        }
+
+        pacientes.frente_peak();
+        historico.push(medico);
+        pacientes.dequeue();
+    }
+
+    historico.peek();
+    historico.imprimirHistorico();
+
+    medicos.percorrer();
+
+    return 0;
+}
